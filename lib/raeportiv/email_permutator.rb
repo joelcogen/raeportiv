@@ -50,6 +50,9 @@ class EmailPermutator
   ]
 
   def self.permutations(fn = "", mn = "", ln = "", domain = "")
+    fn = fn.downcase
+    mn = mn.downcase
+    ln = ln.downcase
     fi = fn[0] || ""
     mi = mn[0] || ""
     li = ln[0] || ""

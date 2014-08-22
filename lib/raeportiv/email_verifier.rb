@@ -5,6 +5,8 @@ class EmailVerifier
     def verify_emails(emails)
       smtp_server = MxResolver.resolve_mx_from_email(emails.first)
       verify_on_smtp(emails, smtp_server)
+    rescue
+      nil
     end
 
     def verify_on_smtp(emails, smtp)
