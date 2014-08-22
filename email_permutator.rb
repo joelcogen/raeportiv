@@ -1,13 +1,13 @@
 class EmailPermutator
 
-	PATTERNS = [
-		"{fn}",
-		"{ln}",
-		"{fn}{ln}",
-		"{fn}.{ln}",
-		"{fi}{ln}",
-		"{fi}.{ln}",
-	  "{fn}{li}",
+  PATTERNS = [
+    "{fn}",
+    "{ln}",
+    "{fn}{ln}",
+    "{fn}.{ln}",
+    "{fi}{ln}",
+    "{fi}.{ln}",
+    "{fn}{li}",
     "{fn}.{li}",
     "{fi}{li}",
     "{fi}.{li}",
@@ -47,9 +47,9 @@ class EmailPermutator
     "{fi}{mi}_{ln}",
     "{fn}_{mi}_{ln}",
     "{fn}_{mn}_{ln}"
-	]
+  ]
 
-	def self.permutations(fn = "", mn = "", ln = "", domain = "")
+  def self.permutations(fn = "", mn = "", ln = "", domain = "")
     fi = fn[0] || ""
     mi = mn[0] || ""
     li = ln[0] || ""
@@ -59,5 +59,5 @@ class EmailPermutator
                                  gsub("\{fi\}",fi).
                                  gsub("\{li\}",li).
                                  gsub("\{mi\}",mi)+"@#{domain}"}
-	end
+  end
 end
