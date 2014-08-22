@@ -11,7 +11,9 @@ class EmailVerifier
       Net::SMTP.start(smtp, 25) do |smtp|
         smtp.helo("raeportiv.io")
         smtp.mailfrom("dolan@raeportiv.io")
-        emails.detect { |email| smtp.rcptto(email) rescue false }
+        emails
+          .map(&:downcase)
+          .detect { |email| smtp.rcptto(email) rescue false }
       end
     end
   end
