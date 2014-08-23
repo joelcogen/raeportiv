@@ -1,6 +1,6 @@
 class DomainPermutator
   SEPARATORS = ["", "-", "_"]
-  TLDS = %w(com net org co info be fr nl de us ca es it)
+  TLDS = %w(com net org co info eu us ca be fr nl de es it)
 
   class << self
     def permutations(company)
