@@ -1,3 +1,7 @@
+require 'raeportiv/domain_permutator'
+require 'raeportiv/email_permutator'
+require 'raeportiv/email_verifier'
+
 class Raepist
   def self.raep(first_name, last_name, company, middle_name: "")
     domain_permutations = DomainPermutator.permutations(company)

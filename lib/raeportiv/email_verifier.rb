@@ -1,4 +1,5 @@
 require 'net/smtp'
+require 'raeportiv/mx_resolver'
 
 class EmailVerifier
   OUR_DOMAIN = "verify-email.org"
@@ -20,11 +21,9 @@ class EmailVerifier
           true
         rescue Net::SMTPServerBusy => e
           # Server disconnected, force new connection
-          puts e
           @smtp = nil
           retry
         rescue => e
-          puts e
           # Mail invalid
           false
         end
