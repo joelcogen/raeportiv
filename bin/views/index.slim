@@ -1,0 +1,53 @@
+html
+  head
+    title Name-to-Mail
+    link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+  body
+    .container
+      h1 Name-to-Mail
+
+      form.form-inline role="form"
+        .form-group
+          input.form-control type="text" name="first_name" placeholder="First name" required=true
+        .form-group
+          input.form-control type="text" name="middle_name" placeholder="Middle name"
+        .form-group
+          input.form-control type="text" name="last_name" placeholder="Last name" required=true
+        .form-group
+          input.form-control type="text" name="company" placeholder="Company" required=true
+
+        button.btn.btn-success type="submit" RAEP
+
+      p#loader.hidden.alert.alert-info
+        | Loading... This can take several minutes, please be patient!
+
+      p#error.hidden.alert.alert-danger
+        | Error :(. Sorry, please try again later.
+
+      p#success.hidden.alert.alert-success
+
+
+    script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"
+    javascript:
+      $("form").submit(function(e) {
+        e.preventDefault();
+        $form = $(e.target);
+
+        $.ajax({
+          type: "POST",
+          url: "/do",
+          data: $form.serialize(),
+          success: function(data) {
+            $("#loader").addClass("hidden");
+            $("#success").removeClass("hidden").html(data);
+          },
+          error: function(error) {
+            console.error(error);
+            $("#loader").addClass("hidden");
+            $("#error").removeClass("hidden");
+          }
+        });
+
+        $form.addClass("hidden");
+        $("#loader").removeClass("hidden");
+      });
