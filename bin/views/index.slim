@@ -10,25 +10,51 @@ html
     .container
       h1 Name-to-Mail
 
-      form.form-inline role="form"
-        .form-group
-          input.form-control type="text" name="first_name" placeholder="First name" required=true
-        .form-group
-          input.form-control type="text" name="middle_name" placeholder="Middle name"
-        .form-group
-          input.form-control type="text" name="last_name" placeholder="Last name" required=true
-        .form-group
-          input.form-control type="text" name="company" placeholder="Company" required=true
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title Manual
+        .panel-body
+          form.form-inline role="form"
+            .form-group
+              input.form-control type="text" name="first_name" placeholder="First name" required=true
+            .form-group
+              input.form-control type="text" name="middle_name" placeholder="Middle name"
+            .form-group
+              input.form-control type="text" name="last_name" placeholder="Last name" required=true
+            .form-group
+              input.form-control type="text" name="domain" placeholder="Domain" required=true
 
-        button.btn.btn-success type="submit" RAEP
+            button.btn.btn-success type="submit" Resolve
 
-      p#loader.hidden.alert.alert-info
-        | Loading... This can take several minutes, please be patient!
+          p#loader.hidden.alert.alert-info
+            | Loading... This can take several minutes, please be patient!
 
-      p#error.hidden.alert.alert-danger
-        | Error :(. Sorry, please try again later.
+          p#error.hidden.alert.alert-danger
+            | Error :(. Sorry, please try again later.
 
-      p#success.hidden.alert.alert-success
+          p#success.hidden.alert.alert-success
+
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title API
+        .panel-body
+          code POST /resolve
+          h5 Request
+          ul
+            li
+              code first_name
+              |  required
+            li
+              code middle_name
+              |  optional
+            li
+              code last_name
+              |  required
+            li
+              code domain
+              |  required
+          h5 Response
+          ul: li E-mail address as plain text
 
 
     script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"
@@ -40,7 +66,7 @@ html
 
         $.ajax({
           type: "POST",
-          url: "/do",
+          url: "/resolve",
           data: $form.serialize(),
           success: function(data) {
             $("#loader").addClass("hidden");

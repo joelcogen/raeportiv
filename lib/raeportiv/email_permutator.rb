@@ -49,9 +49,9 @@ class EmailPermutator
     "{fn}_{mn}_{ln}"
   ]
 
-  def self.permutations(fn = "", mn = "", ln = "", domain = "")
+  def self.permutations(fn, mn, ln, domain)
     fn = fn.downcase.gsub(/[\.\-\s']/, "")
-    mn = mn.downcase.gsub(/[\.\-\s']/, "")
+    mn = (mn || "").downcase.gsub(/[\.\-\s']/, "")
     ln = ln.downcase.gsub(/[\.\-\s']/, "")
     fi = fn[0] || ""
     mi = mn[0] || ""
