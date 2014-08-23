@@ -11,5 +11,3 @@ end
 post "/do" do
   Raepist.raep(params[:first_name], params[:last_name], params[:company], middle_name: params[:middle_name])
 end
-
-enable :run
