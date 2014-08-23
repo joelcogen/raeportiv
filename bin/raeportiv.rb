@@ -9,5 +9,6 @@ get "/" do
 end
 
 post "/resolve" do
-  Raepist.raep(params[:first_name], params[:last_name], params[:domain], middle_name: params[:middle_name])
+  headers("Access-Control-Allow-Origin" => "*")
+  body Raepist.raep(params[:first_name], params[:last_name], params[:domain], middle_name: params[:middle_name])
 end
